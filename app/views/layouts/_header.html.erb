@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Mini Blog</a>
+  <%= link_to "Mini Blog", root_path, class:"navbar-brand" %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,10 +7,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <%= link_to "Feed", root_path, class:"nav-link" %>
       </li>
     </ul>
-    <button type="button" class="btn btn-primary btn-lg">Large button</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
+    <% if user_signed_in? %>
+      <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: "btn btn-primary btn-md", style:"margin-left: 12px"%>
+    <% else %>
+      <%= button_to 'Sign up', new_user_registration_path, method: :get, class: "btn btn-primary btn-md", style:"margin-left: 12px"%> 
+      <%= button_to 'Sign in', new_user_session_path, method: :get, class: "btn btn-primary btn-md", style:"margin-left: 12px" %> 
+    <% end %>
   </div>
 </nav>

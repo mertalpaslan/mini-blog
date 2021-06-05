@@ -1,40 +1,14 @@
 <div class="container-fluid gedf-wrapper">
-  <div class="row">
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-6 gedf-main">
-          <%= render 'form', post: current_user.posts.new if user_signed_in? %>
-          <%= render partial: 'post', collection: @posts, as: :post %>
-      </div>
-      <div class="col-md-3">
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6 gedf-main">
+            <%= render 'form', post: current_user.posts.new if user_signed_in? %>
+            <%= render partial: 'post', collection: @posts, as: :post %>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
 </div>
 
 <%= will_paginate @posts, list_classes: %w(pagination justify-content-center) %>
-
-<style> 
-      .h7 {
-      font-size: 0.8rem;
-  }
-
-  .gedf-wrapper {
-      margin-top: 0.97rem;
-  }
-
-  @media (min-width: 992px) {
-      .gedf-main {
-          padding-left: 4rem;
-          padding-right: 4rem;
-      }
-      .gedf-card {
-          margin-bottom: 2.77rem;
-      }
-  }
-
-  /**Reset Bootstrap*/
-  .dropdown-toggle::after {
-      content: none;
-      display: none;
-  }
-</style>

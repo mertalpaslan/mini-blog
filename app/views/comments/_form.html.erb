@@ -1,32 +1,16 @@
-<%= form_with(model: comment, local: true) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="card comment-box">
+    <div class="card-body">
+      <%= form_with(model: comment, local: true) do |form| %>
+        <div class="form-group">
+            <label class="sr-only" for="message">post</label>
+            <%= form.text_area :body, class:"form-control", id:"message", placeholder:"Add a comment." %>
+        </div>
+        <%= form.hidden_field :post_id, value: comment.post.id %>
+        <div class="btn-toolbar justify-content-between">
+            <div class="btn-group">
+                <%= form.submit "Post", class:"btn btn-primary float-right"%>
+            </div>
+        </div>
+        <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_field :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :post_id %>
-    <%= form.number_field :post_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
