@@ -6,6 +6,7 @@ ruby '2.6.5'
 gem 'bootstrap', '~> 4.6.0'
 gem 'devise'
 gem 'jquery-rails'
+gem 'will_paginate-bootstrap4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
