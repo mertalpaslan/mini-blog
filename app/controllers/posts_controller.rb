@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @posts = Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 4)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -25,9 +25,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_url }
+        format.html { redirect_to posts_url, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
-        flash[:notice] = "Post was successfully created."
       else
         format.html { redirect_back fallback_location: posts_url }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -40,10 +39,10 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @posts, notice: "Post was successfully updated." }
+        format.html { redirect_back fallback_location: posts_url, notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
