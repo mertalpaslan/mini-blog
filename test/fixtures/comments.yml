@@ -2,10 +2,10 @@
 
 one:
   body: MyString
-  user_id: 1
-  post_id: 1
+  user: user_one
+  post: post_one
 
 two:
   body: MyString
-  user_id: 1
-  post_id: 1
+  user: user_two
+  post: post_two

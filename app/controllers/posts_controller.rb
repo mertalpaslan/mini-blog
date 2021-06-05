@@ -16,7 +16,7 @@ class PostsController < ApplicationController
         format.html { redirect_to posts_url, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
-        format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
+        format.html { redirect_back fallback_location: posts_url }
         format.json { render json: @post.errors, status: :unprocessable_entity }
         flash[:alert] = @post.errors.full_messages.to_sentence
       end
@@ -30,8 +30,9 @@ class PostsController < ApplicationController
         format.html { redirect_back fallback_location: posts_url, notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
-        format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
+        format.html { redirect_back fallback_location: posts_url }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        flash[:alert] = @post.errors.full_messages.to_sentence
       end
     end
   end
