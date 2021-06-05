@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc).paginate(page: params[:page], per_page: 4)
+    @posts = Post.includes(:comments).order(created_at: :desc).paginate(page: params[:page], per_page: 4)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
+      format.html { redirect_back fallback_location: posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end

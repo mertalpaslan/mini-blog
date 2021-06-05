@@ -12,9 +12,11 @@
   </head>
 
   <body>
-  <%= render 'layouts/header'%>
-  <%= render 'layouts/messages'%>
+  <div class="content-wrap">
+    <%= render 'layouts/header'%>
+    <%= render 'layouts/messages'%>
     <%= yield %>
+  </div>
   <%= render 'layouts/footer'%>
   </body>
 </html>
