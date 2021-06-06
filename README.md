@@ -1,24 +1,24 @@
-# README
+# Mini Blog
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Heroku Live Demo](https://mini-blog-mert.herokuapp.com/)
 
-Things you may want to cover:
+**Demo Account Info:**
 
-* Ruby version
+e-mail:  `johndoe@example.com`  
+password: `password`  
 
-* System dependencies
+##
+- Ruby version ->  `2.6.5`  
+- Rails version -> `5.2.6`  
+- Database Adapter ->  `PostgreSQL`  
 
-* Configuration
 
-* Database creation
+> Seed data is included in **db/seeds.rb**.  
 
-* Database initialization
+## Extra Dependencies
 
-* How to run the test suite
+Extra gems used in the project.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- `'devise'` -> Gem for implementing authentication  
+- `'bootstrap', '~> 4.6.0'` -> Bootstrap 4 ruby gem for Ruby on Rails  
+- `'will_paginate(-bootstrap4)'` -> API for performing paginated queries with Active Record  
