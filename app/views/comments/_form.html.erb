@@ -1,11 +1,11 @@
-<div class="card comment-box">
+<div class="card comment-box" id="comment-item-<%= comment.id %>">
     <div class="card-body">
-      <%= form_with(model: comment, local: true) do |form| %>
+      <%= form_with(model: comment) do |form| %>
         <div class="form-group">
             <label class="sr-only" for="message">post</label>
-            <%= form.text_area :body, class:"form-control", id:"message", placeholder:"Add a comment." %>
+            <%= form.text_area :body, class:"form-control", id:"comment-input", placeholder:"Add a comment." %>
         </div>
-        <%= form.hidden_field :post_id, value: comment.post.id %>
+        <%= form.hidden_field :post_id, value: comment.post.id if comment.post%>
         <div class="btn-toolbar justify-content-between">
             <div class="btn-group">
                 <%= form.submit "Post", class:"btn btn-primary float-right"%>

@@ -6,8 +6,8 @@
                     <img class="rounded-circle" width="45" src="https://picsum.photos/seed/<%= post.user.id %>/50/50" alt="">
                 </div>
                 <div class="ml-2">
-                    <div class="h5 m-0"><%= post.user.full_name %></div>
-                    <div class="h7 text-muted"><%= post.user.email %></div>
+                    <div class="h5 m-0"><%= link_to post.user.full_name, user_path(post.user) %></div>
+                    <div class="h7 text-muted"><%= link_to post.user.email, user_path(post.user) %></div>
                 </div>
             </div>
             <div>
@@ -28,7 +28,7 @@
     <div class="card-body">
         <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <%= time_ago_in_words(post.created_at) %></div>
         <a class="card-link" href="#">
-            <h5 class="card-title"><%= post.title %></h5>
+            <h5 class="card-title"><%= link_to post.title, post_path(post) %></h5>
         </a>
         <p class="card-text">
             <%= post.body %>
@@ -37,7 +37,9 @@
     <div class="card-footer">
         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comments</a>
         <%= render partial: 'comments/form', locals: { comment: post.comments.new }  if user_signed_in? %>
-        <%= render partial: 'comments/comment_item', collection: post.comments.all.order(created_at: :desc), as: :comment %>
+        <div id="comments">
+            <%= render partial: 'comments/comment_item', collection: post.comments.all, as: :comment %>
+        </div>
     </div>
 </div>
 <% if post.user == current_user && user_signed_in? %>

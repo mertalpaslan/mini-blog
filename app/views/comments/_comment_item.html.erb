@@ -1,19 +1,19 @@
-<div class="card comment-box">
+<div class="card comment-box" id="comment-item-<%= comment.id %>">
     <div class="card-header container-fluid" id="newsHeading">
         <div class="row">
             <div class="col">
-            <img class="rounded-circle" width="45" src="https://picsum.photos/seed/<%= comment.user.id %>/30/30" alt="">
-            <h7 class="card-title"><%= comment.user.full_name %></h7>
+                <img class="rounded-circle" width="45" src="https://picsum.photos/seed/<%= comment.user.id %>/30/30" alt="">
+                    <h7 class="card-title"><%= comment.user.full_name %></h7>
             </div>
-            <% if comment.user == current_user && user_signed_in? %>
-            <div class="col">
-            <%= link_to comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <button type="button" class="close" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-            <% end %>
-            </div>
-            <% end %>
+                <% if comment.user == current_user && user_signed_in? %>
+                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                        <%= link_to "Delete", comment_path(comment), class: "dropdown-item", method: :delete, remote: :true, data: { confirm: "Are you sure?" }  %>
+                        <%= link_to "Edit", edit_comment_path(comment), class: "dropdown-item", remote: :true %>
+                    </div>
+                <% end %>
         </div>
     </div>
     <div class="card-body ">
@@ -21,3 +21,4 @@
         <%= comment.body %>
     </div>
 </div>
+

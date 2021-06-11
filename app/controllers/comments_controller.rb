@@ -2,14 +2,27 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
+  def edit
+  end
   # POST /comments or /comments.json
   def create
     @comment = current_user.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_back fallback_location: posts_url, notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
+        format.js 
+      else
+        format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        flash[:alert] = @comment.errors.full_messages.to_sentence
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.js 
       else
         format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -22,9 +35,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_back fallback_location: posts_url, notice: "Comment was successfully destroyed." }
-      format.json { head :no_content }
+      format.js
     end
+  end
+
+  def other_comments
+    format.js
   end
 
   private
