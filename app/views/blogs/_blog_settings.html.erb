@@ -1,0 +1,91 @@
+<div class="col-md-3">
+    <div class="card gedf-card">
+        <div class="card-body">
+            <h4 class="card-title">Blog Preferences</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul class="list-group list-group-flush">
+            <%= form_with(model: blog, local: true) do |form| %>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="h6 text-muted">Blog Name</div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="h5"><%= form.text_field :name, class:"form-control", id:"blog-name", placeholder:"Change Blog Name" %></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h6 text-muted">Background color</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="h6 text-muted"><%= form.color_field :background_color, class:"form-control", id:"bg-color-input" %></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h6 text-muted">Header color</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="h6 text-muted"><%= form.color_field :header_color, class:"form-control", id:"header-color-input" %></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h6 text-muted">Text color</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="h6 text-muted"><%= form.color_field :text_color, class:"form-control", id:"text-color-input" %></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h6 text-muted"> Font family</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="h6 text-muted"><%= form.select :font_family, fonts, id:"font-family-input", class:"form-control" %></div>
+                        </div>
+                    </div>
+                </li>
+                <br>
+                <%= form.submit "Submit Changes", class:"btn btn-primary float-right"%>
+            <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+$(document).on('turbolinks:load', function() {
+    var domain = "<%= request.domain %>"
+      $('#bg-color-input').on('input', function(){
+          $('body,html').css('background', this.value);
+      });
+        $('#header-color-input').on('input', function(){
+          $('.card, .list-group-item, .form-control').css('background-color', this.value);
+      });
+        $('#text-color-input').on('input', function(){
+         // $('.text-muted').css('color', this.value);
+          $('body,html').css('color', this.value );
+      });
+        $('#font-family-input').on('input', function(){
+          $('body,html').css('font-family', this.value );
+      });
+
+        $('#blog-name').on('input', function(){
+            console.log(this.value.toLowerCase().split(" ").join("_"))
+          $('#blog-link').text(this.value.toLowerCase().split(" ").join("_")+ "." + domain);
+      });
+});
+
+</script>
