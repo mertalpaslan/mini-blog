@@ -5,7 +5,6 @@ class BlogsController < ApplicationController
     def blog
       @posts = @blog.user.posts.includes(:comments).order(created_at: :desc).paginate(page: params[:page], per_page: 4)
       @user = @blog.user
-      @fonts = {"Arial": "arial", "Verdana": "verdana"} 
     end
 
     def create

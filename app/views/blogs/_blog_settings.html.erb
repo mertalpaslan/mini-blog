@@ -2,13 +2,13 @@
     <div class="card gedf-card">
         <div class="card-body">
             <h4 class="card-title">Blog Preferences</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h6 class="card-subtitle mb-2 text-muted text-head">Customize your blog.</h6>
             <ul class="list-group list-group-flush">
             <%= form_with(model: blog, local: true) do |form| %>
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="h6 text-muted">Blog Name</div>
+                            <div class="h6 text-muted text-head">Blog Name</div>
                         </div>
                         <div class="col-md-9">
                             <div class="h5"><%= form.text_field :name, class:"form-control", id:"blog-name", placeholder:"Change Blog Name" %></div>
@@ -18,7 +18,7 @@
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="h6 text-muted">Blog URL</div>
+                            <div class="h6 text-muted text-head">Blog URL</div>
                         </div>
                         <div class="col-md-9">
                             <div class="h6 text-muted" id="blog-link"><%= user.blog.subdomain + "." + request.domain %></div>
@@ -28,40 +28,40 @@
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="h6 text-muted">Background color</div>
+                            <div class="h6 text-muted text-head">Background color</div>
                         </div>
                         <div class="col-md-6">
-                            <div class="h6 text-muted"><%= form.color_field :background_color, class:"form-control", id:"bg-color-input" %></div>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="h6 text-muted">Header color</div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="h6 text-muted"><%= form.color_field :header_color, class:"form-control", id:"header-color-input" %></div>
+                            <div class="h6 text-muted"><%= form.color_field :background_color, class:"form-control", id:"bg-color-input", value: blog.background_color || "#ffffff" %></div>
                         </div>
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="h6 text-muted">Text color</div>
+                            <div class="h6 text-muted text-head">Post card color</div>
                         </div>
                         <div class="col-md-6">
-                            <div class="h6 text-muted"><%= form.color_field :text_color, class:"form-control", id:"text-color-input" %></div>
+                            <div class="h6 text-muted"><%= form.color_field :header_color, class:"form-control", id:"header-color-input", value: blog.header_color || "#ffffff" %></div>
                         </div>
                     </div>
                 </li>
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="h6 text-muted"> Font family</div>
+                            <div class="h6 text-muted text-head">Text color</div>
                         </div>
                         <div class="col-md-6">
-                            <div class="h6 text-muted"><%= form.select :font_family, fonts, id:"font-family-input", class:"form-control" %></div>
+                            <div class="h6 text-muted"><%= form.color_field :text_color, class:"form-control", id:"text-color-input", value: blog.text_color || "#212529" %></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h6 text-muted text-head"> Font family</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="h6 text-muted"><%= form.select :font_family, {"Arial": "arial", "Cursive": "cursive", "Verdana": "verdana", "Times New Roman": "times"}, {},  id:"font-family-input", class:"custom-select" %></div>
                         </div>
                     </div>
                 </li>
@@ -85,7 +85,7 @@ $(document).on('turbolinks:load', function() {
           $('.card, .list-group-item, .form-control').css('background-color', this.value);
       });
         $('#text-color-input').on('input', function(){
-         // $('.text-muted').css('color', this.value);
+          $('.text-muted, .text-head').css('color', this.value);
           $('body,html').css('color', this.value );
       });
         $('#font-family-input').on('input', function(){

@@ -3,16 +3,17 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <div class="h5"><%= @user.full_name %></div>
-                    <div class="h7"><%= @user.email %></div>
+                    <div class="h5"><%= @blog.name %></div>
+                    <div class="h7"><%= @user.full_name %></div>
+                    <div class="h7 text-muted"><%= @user.email %></div>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <div class="h6 text-muted">Posts</div>
+                        <div class="h6 text-head">Posts</div>
                         <div class="h5"><%= @user.posts.count %></div>
                     </li>
                     <li class="list-group-item">
-                        <div class="h6 text-muted">Comments</div>
+                        <div class="h6 text-head">Comments</div>
                         <div class="h5"><%= @user.comments.count %></div>
                     </li>
                 </ul>
@@ -42,7 +43,7 @@
         background-color: <%= @blog.header_color %>;
     }
     .text-muted {
-        color: <%= @blog.text_color %> !important;
+        color: <%= @blog.text_color %>;
     }
 </style>
 

@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: %i[ index ]
+  before_action :authenticate_user!, except: %i[ show index ]
   
   def show
   end
-  
+
   # GET /posts or /posts.json
   def index
     @posts = Post.includes(:comments).order(created_at: :desc).paginate(page: params[:page], per_page: 4)
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_url, notice: "Post was successfully created." }
+        format.html { redirect_back fallback_location: posts_url, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { redirect_back fallback_location: posts_url }
