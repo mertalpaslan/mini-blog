@@ -1,10 +1,10 @@
 <div class="container-fluid gedf-wrapper">
-        <div class="row justify-content-center">
-            <div class="col-md-6 gedf-main">
-                <%= render 'form', post: current_user.posts.new if user_signed_in? %>
-                <%= render partial: 'post', collection: @posts, as: :post %>
-            </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 gedf-main">
+            <%= render 'form', post: current_user.posts.new if user_signed_in? %>
+            <%= render partial: 'post', collection: @posts, as: :post %>
         </div>
     </div>
+</div>
 
-    <%= will_paginate @posts, list_classes: %w(pagination justify-content-center) %>
+<%= will_paginate @posts, list_classes: %w(pagination justify-content-center) %>

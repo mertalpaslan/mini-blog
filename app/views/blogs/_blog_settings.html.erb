@@ -17,6 +17,16 @@
                 </li>
                 <li class="list-group-item">
                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="h6 text-muted">Blog URL</div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="h6 text-muted" id="blog-link"><%= user.blog.subdomain + "." + request.domain %></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="h6 text-muted">Background color</div>
                         </div>

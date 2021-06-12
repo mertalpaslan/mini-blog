@@ -1,8 +1,8 @@
 class BlogsController < ApplicationController
     before_action :set_blog
-    before_action :authenticate_user!
+    before_action :authenticate_user! , except: %i[ blog ]
 
-    def show
+    def blog
       @posts = @blog.user.posts.includes(:comments).order(created_at: :desc).paginate(page: params[:page], per_page: 4)
       @user = @blog.user
       @fonts = {"Arial": "arial", "Verdana": "verdana"} 
@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
     def update
         respond_to do |format|
           if @blog.update(blog_params)
-            format.html { redirect_back fallback_location: posts_url, notice: "Blog was successfully updated." }
+            format.html { redirect_to root_url(subdomain: @blog.subdomain), notice: "Blog was successfully updated." }
             format.json { render :show, status: :ok, location: @blog }
           else
             format.html { redirect_back fallback_location: posts_url }
@@ -39,7 +39,7 @@ class BlogsController < ApplicationController
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_blog
-        @blog = Blog.find(params[:id])
+        @blog = Blog.find_by!(subdomain: request.subdomain)
       end
   
       # Only allow a list of trusted parameters through.
