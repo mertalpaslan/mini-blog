@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[ index ]
   
-
+  def show
+  end
+  
   # GET /posts or /posts.json
   def index
     @posts = Post.includes(:comments).order(created_at: :desc).paginate(page: params[:page], per_page: 4)

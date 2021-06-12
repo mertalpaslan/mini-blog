@@ -4,8 +4,16 @@ class User < ApplicationRecord
          
   has_many :posts
   has_many :comments
+  has_one :blog
+
+  after_create :create_blog
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def create_blog
+    blog = Blog.new(name: "blog_#{self.id}", user: self )
+    blog.save
   end
 end
