@@ -1,1 +1,2 @@
 $('#comments-<%= @comment.post.id %>').prepend("<%= escape_javascript("#{render partial: 'comments/comment_item', locals: { comment: @comment}}").html_safe %>");
+$('#comment-input-<%= @comment.post.id %>').val('');

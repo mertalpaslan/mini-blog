@@ -3,7 +3,7 @@
       <%= form_with(model: comment) do |form| %>
         <div class="form-group">
             <label class="sr-only" for="message">post</label>
-            <%= form.text_area :body, class:"form-control", id:"comment-input", placeholder:"Add a comment." %>
+            <%= form.text_area :body, class:"form-control", id:"comment-input-#{ comment.post.id }", placeholder:"Add a comment." %>
         </div>
         <%= form.hidden_field :post_id, value: comment.post.id if comment.post%>
         <div class="btn-toolbar justify-content-between">

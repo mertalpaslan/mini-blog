@@ -38,7 +38,7 @@
         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comments</a>
         <%= render partial: 'comments/form', locals: { comment: post.comments.new }  if user_signed_in? %>
         <div id="comments-<%= post.id %>">
-            <%= render partial: 'comments/comment_item', collection: post.comments.all, as: :comment %>
+            <%= render partial: 'comments/comment_item', collection: post.comments.order(created_at: :desc), as: :comment %>
         </div>
     </div>
 </div>

@@ -15,6 +15,10 @@ user1 = User.create!(first_name: "Mert", last_name: "Alpaslan", email: "alpaslan
 user2 = User.create!(first_name: "Ahmet", last_name: "Yılmaz", email: "ahmet@example.com", password: "password", password_confirmation: "password")
 user3 = User.create!(first_name: "John", last_name: "Doe", email: "johndoe@example.com", password: "password", password_confirmation: "password")
 
+user1.blog.update!(name: "Mert Alpaslan", background_color: "#ff9494", header_color: "#fffed6", text_color: "#000000", font_family: "arial")
+user2.blog.update!(name: "Ahmet Yılmaz", background_color: "#1a5d19", header_color: "#d4eeba", text_color: "#1d6bb4", font_family: "arial")
+user3.blog.update!(name: "Johns Blog", background_color: "#870d19", header_color: "#f4f6da", text_color: "#111417", font_family: "times")
+
 3.times do |i|
 	user1.posts.create!(title: "Post #{i + 1}", body: body_text)
 end
