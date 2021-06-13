@@ -1,7 +1,17 @@
 # Mini Blog
 
-[Heroku Live Demo](https://mini-blog-mert.herokuapp.com/)
+[Heroku Live Demo](https://mini-blog-mert.herokuapp.com/) (Without Subdomains Branch)
 
+##
+
+To test subdomains and google authentication locally start your server at `lvh.me:3000` or `lvh.me:3333` , by: 
+
+
+`rails s -b "lvh.me"`
+
+
+
+##
 **Demo Account Info:**
 
 e-mail:  `johndoe@example.com`  
