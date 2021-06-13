@@ -6,10 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-body_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-						Proin iaculis lectus porta risus molestie, sit amet faucibus ante fermentum. 
-						Aenean mollis risus turpis, in viverra orci consectetur in. Praesent et sapien ac nunc lacinia commodo. 
-						In auctor fermentum dictum. Aliquam et cursus urna, non dignissim erat. Duis sed porta elit, convallis volutpat nibh."
+body_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis lectus porta risus molestie, sit amet faucibus ante fermentum. Aenean mollis risus turpis, in viverra orci consectetur in. Praesent et sapien ac nunc lacinia commodo. In auctor fermentum dictum. Aliquam et cursus urna, non dignissim erat. Duis sed porta elit, convallis volutpat nibh."
 
 user1 = User.create!(first_name: "Mert", last_name: "Alpaslan", email: "alpaslanmert@yahoo.com", password: "password", password_confirmation: "password")
 user2 = User.create!(first_name: "Ahmet", last_name: "Yılmaz", email: "ahmet@example.com", password: "password", password_confirmation: "password")

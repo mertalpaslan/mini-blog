@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        format.html { redirect_back fallback_location: posts_url, status: :ok }
         format.js 
       else
         format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
@@ -22,6 +23,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
+        format.html { redirect_back fallback_location: posts_url, status: :ok }
         format.js 
       else
         format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
@@ -35,12 +37,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
+      format.html { redirect_back fallback_location: posts_url, status: :ok }
       format.js
     end
-  end
-
-  def other_comments
-    format.js
   end
 
   private

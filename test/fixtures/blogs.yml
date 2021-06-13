@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+blog_one:
+  name: MyString
+  user: user_one
+  background_color: MyString
+  header_color: MyString
+  text_color: MyString
+  font_family: MyString
+
+blog_two:
+  name: MyString
+  user: user_two
+  background_color: MyString
+  header_color: MyString
+  text_color: MyString
+  font_family: MyString
+  subdomain: my_string

@@ -28,8 +28,6 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Comment.count') do
       post comments_url, params: { comment: { body: @comment.body, post_id: @comment.post_id, user_id: @comment.user_id } }
     end
-
-    assert_redirected_to posts_url
   end
 
   test "should destroy comment" do
@@ -37,7 +35,16 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Comment.count', -1) do
       delete comment_url(@comment)
     end
-
-    assert_redirected_to posts_url
   end
+    test "should update comment" do
+      sign_in users(:user_one)
+      patch comment_url(@comment), params: { comment: { body: @comment.body, user_id: @comment.user.id, post_id: @comment.post.id } }
+      assert_response :ok
+    end
+  
+    test "should redirected if cant update comment" do
+      sign_in users(:user_one)
+      patch comment_url(@comment), params: { comment: { body: nil, user_id: @comment.user_id } }
+      assert_response :unprocessable_entity
+    end
 end

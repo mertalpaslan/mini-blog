@@ -6,21 +6,6 @@ class BlogsController < ApplicationController
       @posts = @blog.user.posts.includes(:comments).order(created_at: :desc).paginate(page: params[:page], per_page: 4)
       @user = @blog.user
     end
-
-    def create
-      @blog = current_user.blogs.new(blog_params)
-  
-      respond_to do |format|
-        if @blog.save
-          format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
-          format.js 
-        else
-          format.html { redirect_back fallback_location: posts_url, status: :unprocessable_entity }
-          format.json { render json: @blog.errors, status: :unprocessable_entity }
-          flash[:alert] = @blog.errors.full_messages.to_sentence
-        end
-      end
-    end
   
     def update
         respond_to do |format|

@@ -4,6 +4,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:post_one)
     @user = users(:user_one)
+    @blog = blogs(:blog_one)
   end
 
   test "should get index" do
