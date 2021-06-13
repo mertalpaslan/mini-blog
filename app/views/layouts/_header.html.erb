@@ -10,11 +10,11 @@
       </li>
     </ul>
     <% if user_signed_in? %>
-      <%= link_to 'My Blog', root_url(subdomain: current_user.blog.subdomain), class: "btn btn-success btn-md", style:"margin-left: 12px"%>
-      <%= button_to 'Log Out', destroy_user_session_url(subdomain: false), method: :delete, class: "btn btn-primary btn-md", style:"margin-left: 12px"%>
+      <%= link_to 'My Blog', blog_url(current_user.blog), class: "btn btn-success btn-md", style:"margin-left: 12px"%>
+      <%= button_to 'Log Out', destroy_user_session_url, method: :delete, class: "btn btn-primary btn-md", style:"margin-left: 12px"%>
     <% else %>
-      <%= button_to 'Sign up', new_user_registration_url(subdomain: false), method: :get, class: "btn btn-primary btn-md", style:"margin-left: 12px"%> 
-      <%= button_to 'Sign in', new_user_session_url(subdomain: false), method: :get, class: "btn btn-primary btn-md", style:"margin-left: 12px" %> 
+      <%= button_to 'Sign up', new_user_registration_url, method: :get, class: "btn btn-primary btn-md", style:"margin-left: 12px"%> 
+      <%= button_to 'Sign in', new_user_session_url, method: :get, class: "btn btn-primary btn-md", style:"margin-left: 12px" %> 
     <% end %>
   </div>
 </nav>

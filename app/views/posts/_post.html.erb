@@ -6,8 +6,8 @@
                     <img class="rounded-circle" width="45" src="https://picsum.photos/seed/<%= post.user.id %>/50/50" alt="">
                 </div>
                 <div class="ml-2">
-                    <div class="h5 m-0"><%= link_to post.user.full_name + " (#{post.user.blog.name})", root_url( subdomain: post.user.blog.subdomain) %></div>
-                    <div class="h7 text-muted"><%= link_to post.user.email, root_url( subdomain: post.user.blog.subdomain) %></div>
+                    <div class="h5 m-0"><%= link_to post.user.full_name + " (#{post.user.blog.name})", blog_url( post.user.blog ) %></div>
+                    <div class="h7 text-muted"><%= link_to post.user.email, blog_url( post.user.blog ) %></div>
                 </div>
             </div>
             <div>
